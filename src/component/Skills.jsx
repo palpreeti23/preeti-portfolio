@@ -6,7 +6,7 @@ import tailwind from "../assets/tailwind-img.png";
 import html from "../assets/html-img.png";
 import css from "../assets/css.img.png";
 import git from "../assets/git-img.png";
-import github from "../assets/git-img.png";
+import github from "../assets/github-img.png";
 
 function Skills() {
   return (
