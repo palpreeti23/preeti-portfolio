@@ -1,5 +1,4 @@
 import React from "react";
-
 import js from "../assets/js-img.png";
 import react from "../assets/react-img.png";
 import tailwind from "../assets/tailwind-img.png";
@@ -60,7 +59,7 @@ function Skills() {
                 />
               </div>
               <div className="flex flex-col items-center justify-center">
-                <h3>Tailwind Css</h3>
+                <h3>Tailwind</h3>
               </div>
             </div>
           </div>
