@@ -1,24 +1,77 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BsFillPersonLinesFill } from "react-icons/bs";
 import { FaGithub, FaLinkedinIn } from "react-icons/fa";
 import { BsInstagram } from "react-icons/bs";
 import { useForm, ValidationError } from "@formspree/react";
 import Preeti from "../assets/preeti-img.jpeg";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 function Contact() {
   const [state, handleSubmit] = useForm("xzblbzao");
 
+  const container = {
+    hidden: { opacity: 0, y: 10 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { staggerChildren: 0.2 },
+    },
+  };
+
+  const items = {
+    hidden: { opacity: 0, y: 10 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.7,
+        ease: "easeInOut",
+      },
+    },
+  };
+
+  const mainDiv = {
+    hidden: { y: 0 },
+    hover: {
+      y: 0,
+      transition: { staggerChildren: 0.1 },
+    },
+  };
+  const divItems = {
+    hidden: { y: 15 },
+    hover: {
+      y: 0,
+      // transition: { type: "spring", stiffness: 300, damoing: 8 },
+      transition: { duration: 0.5, ease: "esaeInOut" },
+    },
+  };
+
   return (
-    <div id="contact" className="w-full lg:h-screen">
-      <div className="max-w-[1240px] m-auto px-2 py-16 w-full ">
-        <p className="text-xl tracking-widest uppercase text-[#5651e5]">
+    <div id="contact" className="w-full lg:h-screen pt-14">
+      <motion.div
+        variants={container}
+        initial="hidden"
+        animate="visible"
+        className="max-w-[1240px] m-auto px-2 py-16 w-full "
+      >
+        <motion.p
+          variants={items}
+          className="text-xl tracking-widest uppercase text-[#5651e5]"
+        >
           Contact
-        </p>
-        <h2 className="py-4">Get In Touch</h2>
-        <div className="grid lg:grid-cols-5 gap-8">
+        </motion.p>
+        <motion.h2 variants={items} className="py-4">
+          Get In Touch
+        </motion.h2>
+        <motion.div variants={items} className="grid lg:grid-cols-5 gap-8">
           {/* left */}
-          <div className="col-span-3 lg:col-span-2 w-full h-full shadow-xl shadow-gray-400 rounded-xl p-4">
+          <motion.div
+            variants={mainDiv}
+            whileHover="hover"
+            initial="hidden"
+            className="col-span-3 lg:col-span-2 w-full h-full shadow-xl shadow-gray-400 rounded-xl p-4"
+          >
             <div className="lg:p-4 h-full ">
               <div>
                 <img
@@ -28,16 +81,23 @@ function Contact() {
                 />
               </div>
               <div>
-                <h2 className="py-2">Preeti</h2>
-                <p>Frontend Developer</p>
-                <p className="py-4">
+                <motion.h2 variants={divItems} className="py-2">
+                  Preeti
+                </motion.h2>
+                <motion.p variants={divItems}>Frontend Developer</motion.p>
+                <motion.p variants={divItems} className="py-4">
                   I am available for freelance or full-time positions. Contact
                   me and let&apos;s talk.
-                </p>
+                </motion.p>
               </div>
               <div>
-                <p className="uppercase pt-8">Connect With Me</p>
-                <div className="flex items-center justify-between py-4">
+                <motion.p variants={divItems} className="uppercase pt-8">
+                  Connect With Me
+                </motion.p>
+                <motion.div
+                  variants={divItems}
+                  className="flex items-center justify-between py-4"
+                >
                   <div className="rounded-full shadow-lg shadow-gray-400 p-6 cursor-pointer hover:scale-110 ease-in duration-300">
                     <Link to={`https://www.linkedin.com/in/preeti-pal-dev/`}>
                       <FaLinkedinIn />
@@ -62,10 +122,10 @@ function Contact() {
                       <BsFillPersonLinesFill />
                     </div>
                   </Link>
-                </div>
+                </motion.div>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* right */}
           <div className="col-span-3 w-full h-auto shadow-xl shadow-gray-400 rounded-xl lg:p-4">
@@ -147,15 +207,21 @@ function Contact() {
                       errors={state.errors}
                     />
                   </div>
-                  <button className="w-full p-4 text-gray-100 mt-4">
+                  <motion.button
+                    initial={{ scale: 0.9 }}
+                    whileHover={{ scale: 0.93 }}
+                    whileTap={{ scale: 0.9 }}
+                    transition={{ duration: 0.3, ease: "easeIn" }}
+                    className="w-full p-4 text-gray-100 mt-4"
+                  >
                     Send Message
-                  </button>
+                  </motion.button>
                 </form>
               )}
             </div>
           </div>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </div>
   );
 }

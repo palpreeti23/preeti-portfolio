@@ -9,6 +9,7 @@ import {
 import { FaLinkedinIn } from "react-icons/fa";
 import { BsInstagram } from "react-icons/bs";
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 function Navbar() {
   const [nav, setNav] = useState(false);
